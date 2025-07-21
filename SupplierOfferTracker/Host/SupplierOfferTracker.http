@@ -1,0 +1,6 @@
+@SupplierOfferTracker_HostAddress = http://localhost:5096
+
+GET {{SupplierOfferTracker_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -416,3 +416,14 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Custom ignore
+/.vs
+/.vs/slnx.sqlite
+**/obj
+**/bin
+/.vs/slnx.sqlite
+.idea
+.vscode/*
+*logs/
+
