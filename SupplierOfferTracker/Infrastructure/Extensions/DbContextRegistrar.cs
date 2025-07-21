@@ -1,4 +1,6 @@
+using Domain.Interfaces.Repositories;
 using Infrastructure.Context;
+using Infrastructure.Implementations.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,6 +40,8 @@ public static class DbContextRegistrar
     /// <returns>Коллекция сервисов.</returns>
     private static IServiceCollection AddRepositories(this IServiceCollection services)
     {
+        services.AddScoped<IOfferRepository, OfferRepository>();
+        services.AddScoped<ISupplierRepository, SupplierRepository>();
         
         return services;
     }

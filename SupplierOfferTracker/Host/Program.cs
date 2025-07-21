@@ -1,4 +1,5 @@
 using System.Reflection;
+using Application.Extensions;
 using Infrastructure.Extensions;
 using Microsoft.OpenApi.Models;
 
@@ -7,7 +8,8 @@ var services = builder.Services;
 var configuration = builder.Configuration;
 
 services
-    .AddInfrastructureServices(configuration);
+    .AddInfrastructureServices(configuration)
+    .AddApplicationServices();
 
 services.AddControllers()
     .ConfigureApiBehaviorOptions(options =>

@@ -1,3 +1,5 @@
+using Application.Contracts.Services.Suppliers;
+using Application.Contracts.Services.Suppliers.GetPopularSuppliers;
 using Domain.Entities;
 using Host.Controllers.Base;
 using Microsoft.AspNetCore.Mvc;
@@ -11,5 +13,26 @@ namespace Host.Controllers;
 [Route("[controller]")]
 public class SupplierController : BaseController
 {
-    
+    private readonly ISupplierService _supplierService;
+
+    public SupplierController(ISupplierService supplierService)
+    {
+        _supplierService = supplierService;
+    }
+
+    /// <summary>
+    /// Получение поставщиков с наибольшим количеством офферов.
+    /// </summary>
+    /// <remarks>
+    /// Пример запроса:
+    /// 
+    ///     GET /Supplier/GetPopularSuppliers?Top=3
+    /// </remarks>
+    /// <param name="query">Параметры запроса.</param>
+    /// <returns>Список популярных поставщиков.</returns>
+    [HttpGet("[action]")]
+    public async Task<IEnumerable<GetPopularSuppliersDto>> GetPopularSuppliers([FromQuery] GetPopularSuppliersQuery query)
+    {
+        return await _supplierService.GetPopularSuppliersAsync(query);
+    }
 }
