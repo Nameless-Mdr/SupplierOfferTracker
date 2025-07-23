@@ -1,5 +1,6 @@
 using System.Reflection;
 using Application.Extensions;
+using Host.Middleware;
 using Infrastructure.Extensions;
 using Microsoft.OpenApi.Models;
 
@@ -11,14 +12,8 @@ services
     .AddInfrastructureServices(configuration)
     .AddApplicationServices();
 
-services.AddControllers()
-    .ConfigureApiBehaviorOptions(options =>
-    {
-        options.SuppressModelStateInvalidFilter = true;
-    });
-
+services.AddControllers();
 services.AddEndpointsApiExplorer();
-
 services.AddSwaggerGen(swagger =>
 {
     var assemblyName = Assembly.GetExecutingAssembly().GetName().Name;
@@ -41,6 +36,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.MapControllers();
 

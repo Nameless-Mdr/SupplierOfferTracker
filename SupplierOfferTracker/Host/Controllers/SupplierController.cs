@@ -1,7 +1,6 @@
 using Application.Contracts.Services.Suppliers;
 using Application.Contracts.Services.Suppliers.GetPopularSuppliers;
 using Domain.Entities;
-using Host.Controllers.Base;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Host.Controllers;
@@ -11,7 +10,7 @@ namespace Host.Controllers;
 /// </summary>
 [ApiController]
 [Route("[controller]")]
-public class SupplierController : BaseController
+public class SupplierController : ControllerBase
 {
     private readonly ISupplierService _supplierService;
 

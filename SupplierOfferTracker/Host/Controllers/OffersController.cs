@@ -1,9 +1,7 @@
 using Application.Contracts.Services.Offers;
 using Application.Contracts.Services.Offers.Add;
-using Application.Contracts.Services.Offers.Common;
 using Application.Contracts.Services.Offers.SearchOffers;
 using Domain.Entities;
-using Host.Controllers.Base;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Host.Controllers;
@@ -13,7 +11,7 @@ namespace Host.Controllers;
 /// </summary>
 [ApiController]
 [Route("[controller]")]
-public class OffersController : BaseController
+public class OffersController : ControllerBase
 {
     private readonly IOfferService _offerService;
 
